@@ -1,6 +1,7 @@
 public class Demo3 {
     // 汉诺塔的移动
     public static void move(char pos1, char pos2) {
+
         System.out.println(pos1 + "->" + pos2);
     }
 
