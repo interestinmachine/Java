@@ -6,6 +6,7 @@ class SeqList {
 
     public SeqList() {
         this.elem = new int[10];
+        this.uesdSize = 0;
     }
 
     // 打印顺序表

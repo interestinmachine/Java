@@ -2,9 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8231b1df-253d-4726-964f-89635fe92ddc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/顺序表/Demo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/顺序表/Demo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/顺序表/SeqList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/顺序表/SeqList.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/Demo21.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/Demo22.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/Demo23.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/Demo24.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/Demo25.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/Demo26.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/Demo27.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/Demo28.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/Demo29.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/Demo30.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/Demo31.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/Demo32.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/Demo33.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/Demo34.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../单链表/src/Demo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../作业/src/Demo20.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../作业/src/Demo20.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Demo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +48,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RunManager">
