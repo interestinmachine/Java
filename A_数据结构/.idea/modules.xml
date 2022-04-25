@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/A_数据结构.iml" filepath="$PROJECT_DIR$/.idea/A_数据结构.iml" />
+      <module fileurl="file://$PROJECT_DIR$/单链表/单链表.iml" filepath="$PROJECT_DIR$/单链表/单链表.iml" />
+      <module fileurl="file://$PROJECT_DIR$/双向链表/双向链表.iml" filepath="$PROJECT_DIR$/双向链表/双向链表.iml" />
+      <module fileurl="file://$PROJECT_DIR$/顺序表/顺序表.iml" filepath="$PROJECT_DIR$/顺序表/顺序表.iml" />
+    </modules>
+  </component>
+</project>
