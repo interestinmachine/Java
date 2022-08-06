@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f0e27c8f-7bdb-45de-9684-76a9756b7b18" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../JDBC/src/TestJDBCSelect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/实现双向链表的增删查改/MyDoubleLinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/实现双向链表的增删查改/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/实现自己的MyArrayList/MyArrayList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../作业/src/实现自己的MyArrayList/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../多线程/src/ThreadTest/ThreadDemo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../多线程/src/ThreadTest/ThreadDemo2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../多线程/src/ThreadTest/ThreadDemo3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../多线程/src/ThreadTest/ThreadDemo4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../多线程/src/ThreadTest/ThreadDemo5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../多线程/src/ThreadTest/ThreadDemo6.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../作业/方法重载/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../作业/方法重载/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../作业/方法重载/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../作业/方法重载/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../作业/方法重载/out/production/方法重载/Demo1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../作业/方法重载/out/production/方法重载/Methods.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../作业/方法重载/src/Demo1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../作业/方法重载/src/practice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../作业/方法重载/方法重载.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="299lNrnS3iqBuYObLmibL4GfzTt" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$" />
+      <setting name="debug" value="false" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f0e27c8f-7bdb-45de-9684-76a9756b7b18" name="Changes" comment="" />
+      <created>1652533148391</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652533148391</updated>
+    </task>
+    <servers />
+  </component>
+</project>
