@@ -1,4 +1,36 @@
-<html>
-    <title>这是个标题</title>
-    <body>hello 啊啊啊</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 创建一个空的 div -->
+    <div class="container"></div>
+
+    <button>此处是删除 div 的按钮</button>
+
+    <script>
+        // 首先创建一个 节点
+        let newDiv = document.createElement('div');
+        newDiv.className = 'newDiv';
+        newDiv.innerHTML = "hello world!!";
+
+        // 将 newDiv 打印在控制台上
+        console.log(newDiv);
+
+        // 将 新节点 挂到 DOM 树上
+        let container = document.querySelector('.container');
+        container.appendChild(newDiv);
+
+        // 让 按钮 实现删除功能
+        let button = document.querySelector('button');
+        button.onclick = function() {
+            // 删除节点
+            container.removeChild(newDiv);
+        }
+    </script>
+</body>
 </html>
