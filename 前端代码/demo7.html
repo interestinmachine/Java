@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手动计数器</title>
+    
+</head>
+<body>
+    <div class="parent">
+        <div class="screen">0</div>
+        <div class="ctrl">
+            <button id="add">+</button>
+            <button id="minus">-</button>
+        </div>
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .parent {
+            width: 500px;
+            height: 300px;
+            background-color:bisque;
+            margin: 0 auto;
+        }
+
+        .parent .screen {
+            width: 200px;
+            height: 150px;
+            font-size: 50px;
+            line-height: 150px;
+            color:purple;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .parent .ctrl {
+            width: 300px;
+            height: 150px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .parent .ctrl button {
+            width: 100px;
+            height: 50px;
+            font-size: 20px;
+            line-height: 20px;
+            text-align: center;
+            background-color:cadetblue;
+            border-radius: 10px;
+            border: none;
+        }
+
+        .parent .ctrl button:active {
+            color:aliceblue;
+            background-color: black;
+        }
+    </style>
+
+    <script>
+        let addButton = document.querySelector('#add');
+        addButton.onclick = function() {
+            //1.选中 screen 元素
+            let screen = document.querySelector('.screen');
+            //2.取出其中的内容
+            let content = screen.innerHTML;
+            //3.把内容+1
+            let result = parseInt(content)+1;
+            //4.把内容写回
+            screen.innerHTML = result;
+        }
+
+        let minusButton = document.querySelector('#minus');
+        minusButton.onclick = function() {
+            //1.选中 screen 元素
+            let screen = document.querySelector('.screen');
+            //2.取出其中的内容
+            let content = screen.innerHTML;
+            //3.把内容-1
+            let result = parseInt(content)-1;
+            //4.把内容写回
+            screen.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

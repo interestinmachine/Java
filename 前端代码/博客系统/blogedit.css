@@ -1,0 +1,47 @@
+.blog_edit_container {
+    width: 1000px;
+    height: calc(100% - 50px);
+    margin: 0 auto;
+}
+
+.blog_edit_container .title {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.blog_edit_container .title input {
+    width: 890px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.4);
+    padding-left: 10px;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.blog_edit_container .title button {
+    width: 100px;
+    height: 40px;
+    border: none;
+    background-color: orange;
+    color: white;
+    border-radius: 10px;
+}
+
+.blog_edit_container .title button:hover {
+    background-color: brown;
+}
+
+.blog_edit_container .title button:active {
+    background-color: black;
+
+}
+
+.blog_edit_container #editor {
+    border-radius: 10px;
+    opacity: 80%;
+}

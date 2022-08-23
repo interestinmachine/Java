@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="parent">
+        <h3>请选择你的老婆：</h3>
+
+        <input type="checkbox" class="girl">留美 <br>
+        <input type="checkbox" class="girl">奈亚子 <br>
+        <input type="checkbox" class="girl">貂蝉 <br>
+        <input type="checkbox" class="girl">孙尚香 <br>
+        <input type="checkbox" class="all">全都要 <br>
+    </div>
+
+    <script>
+        let all = document.querySelector('.all');
+        let girls = document.querySelectorAll('.girl');
+
+        all.onclick = function() {
+            for (let i = 0; i < girls.length; i++) {
+                girls[i].checked = all.checked;
+            }
+        }
+
+        for (let i = 0; i < girls.length; i++) {
+            girls[i].onclick = function() {
+                all.checked = checkGirls();
+            }
+        }
+
+        function checkGirls() {
+            for (let i = 0; i < girls.length; i++) {
+                if (!girls[i].checked) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
