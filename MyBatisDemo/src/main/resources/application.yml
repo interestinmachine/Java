@@ -1,0 +1,11 @@
+# 当前运行的环境（配置文件）
+spring:
+  profiles:
+    active: dev
+
+# 配置 mybatis xml 保存路径
+mybatis:
+  mapper-locations: classpath:mybatis/**Mapper.xml
+  # classpath 表示 根路径 resources
+  # mybatis 即为我们自己创建的目录（用来存储 xml 保存路径的）
+  # **Mapper.xml 凡是以 Mapper.xml 为结尾的文件，就是 mybatis 的 xml 文件。

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initialscale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <title>Document</title>
+    <script>
+        // ajax 提交
+        function mysub(){
+            //1、判空
+            // 输入框中的值
+            let username =  jQuery('#username');
+            let password = jQuery('#password');
+            // jQuery.trim 去空格
+            if(jQuery.trim(username.val()) == ''){
+                alert("请输入用户名！");
+                return;
+            }
+            if(jQuery.trim(password.val()) == ''){
+                alert("请输入密码！");
+                return;
+            }
+            jQuery.ajax({
+                // 请求使用方法
+                type: "POST",
+                //  映射方法路径
+                url: '/user/login2',
+                // 请求正文
+                data: {"username": username.val(),"password": password.val()},
+                // 除了 服务器范湖的结果
+                success: function(result){
+                    alert(JSON.stringify(result));
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div style="text-align: center;">
+    <h1>登录</h1>
+    ⽤户：<input id="username">
+    <br>
+    密码：<input id="password" type="password">
+    <br>
+    <input type="button" value=" 提交 " onclick="mysub()"
+           style="margin-top: 20px;margin-left: 50px;">
+</div>
+</body>
+</html>
