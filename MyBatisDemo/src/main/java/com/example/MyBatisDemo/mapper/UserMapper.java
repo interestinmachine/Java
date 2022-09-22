@@ -4,6 +4,8 @@ import com.example.MyBatisDemo.model.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper // 变成 mybatis interface
 public interface UserMapper {
     // 根据用户 id 查询用户
@@ -20,4 +22,26 @@ public interface UserMapper {
 
     // 添加用户，返回新增用户的id
     public int addGetId(UserInfo userInfo);
+
+    // 根据用户名字查询信息
+    public UserInfo getUserByName(@Param("name")String username);
+
+    public List<UserInfo> getUserByName2(@Param("username")String username);
+
+    // 登录功能
+    public List<UserInfo> login(@Param("username")String username, @Param("password")String password);
+
+    // 添加用户，photo 是非必传参数
+    public int add2(UserInfo userInfo);
+
+    // 根据用户 id 查询用户信息，和 所对应的文章信息
+    public UserInfo getUserAndArticleById(@Param("id")Integer id);
+
+    // 添加用户，其中 username、password、photo 都是非必传参数
+    // 但至少会传递一个参数
+    public int add3(UserInfo userInfo);
+
+    public int updateById(UserInfo userInfo);
+
+    public int delIds(List<Integer> ids);
 }

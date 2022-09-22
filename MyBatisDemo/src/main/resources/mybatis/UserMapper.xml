@@ -2,9 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace 要设置成实现接口的具体包名加类名 -->
 <mapper namespace="com.example.MyBatisDemo.mapper.UserMapper">
+    <resultMap id="BaseMap" type="com.example.MyBatisDemo.model.UserInfo">
+        <!-- 主键映射 -->
+        <id column="id" property="id"></id>
+        <!-- 表示普通属性映射 -->
+        <result column="username" property="name"></result>
+        <result column="password" property="password"></result>
+        <result column="photo" property="photo"></result>
+        <result column="createtime" property="createtime"></result>
+        <result column="updatetime" property="updatetime"></result>
+        <result column="state" property="state"></result>
+        <collection property="articleInfoList"
+                    resultMap="com.example.MyBatisDemo.mapper.ArticleMapper.BaseMap"
+                    columnPrefix="a_">
+        </collection>
+    </resultMap>
+
+    <!-- 根据用户 id 查询用户信息，和 所对应的文章信息 -->
+    <select id="getUserAndArticleById" resultMap="BaseMap">
+        select u.*,a.id a_id,a.title a_title,a.content a_content,a.createtime a_createtime,
+               a.updatetime a_updatetime,a.uid a_uid,a.rcount a_rcount,a.state a_state
+        from userinfo u left join articleinfo a on u.id=a.uid where u.id=#{id}
+    </select>
+
     <!-- 根据 id 查询用户 -->
-    <select id="getUserById" resultType="com.example.MyBatisDemo.model.UserInfo">
-        select * from userinfo where id=#{id}
+    <select id="getUserById" resultMap="BaseMap">
+        select * from userinfo
+        <where>
+            <if test="id!=null">
+                id=#{id}
+            </if>
+        </where>
     </select>
 
     <!-- 根据 id 更改数值 -->
@@ -16,6 +44,12 @@
     <delete id="del">
         delete from userinfo where id=#{id}
     </delete>
+    <delete id="delIds">
+        delete from userinfo where id in
+        <foreach collection="ids" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </delete>
 
     <!-- 添加用户，返回受影响的行数 -->
     <insert id="add">
@@ -26,4 +60,75 @@
     <insert id="addGetId" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         insert into userinfo(username,password,photo) values(#{username},#{password},#{photo})
     </insert>
+
+    <!-- 根据用户姓名查询信息 -->
+    <select id="getUserByName" resultType="com.example.MyBatisDemo.model.UserInfo">
+        select * from userinfo where username=#{name}
+    </select>
+
+    <select id="getUserByName2" resultType="com.example.MyBatisDemo.model.UserInfo">
+        select * from userinfo where username like '%${username}%'
+    </select>
+
+    <!-- 用户登录 -->
+    <select id="login" resultType="com.example.MyBatisDemo.model.UserInfo">
+        select * from userinfo where username=#{username} and password=#{password}
+    </select>
+
+    <!-- 添加用户，photo 是非必传参数 -->
+    <insert id="add2">
+        insert into userinfo(username,password
+        <if test="photo!=null">
+            ,photo
+        </if>
+        ) value(#{name},#{password}
+            <if test="photo!=null">
+                ,#{photo}
+            </if>
+            )
+    </insert>
+
+    <insert id="add3">
+        insert into userinfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name!=null">
+                username,
+            </if>
+            <if test="password!=null">
+                password,
+            </if>
+            <if test="photo!=null">
+                photo,
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name!=null">
+                #{name},
+            </if>
+            <if test="password!=null">
+                #{password},
+            </if>
+            <if test="photo!=null">
+                #{photo},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById">
+        update userinfo
+        <set>
+            <if test="name!=null">
+                username=#{name},
+            </if>
+            <if test="password!=null">
+                password=#{password},
+            </if>
+            <if test="photo!=null">
+                photo=#{photo}
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
 </mapper>
