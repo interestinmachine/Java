@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <!-- namespace 要设置成实现接口的具体包名加类名 -->
+<mapper namespace="com.nowcoder.community.dao.UserMapper">
+        <insert id="insertUser"></insert>
+        <update id="updateStatus"></update>
+        <update id="updateHeader"></update>
+        <update id="updatePassword"></update>
+        <select id="selectById" resultType="com.nowcoder.community.entity.User">
+                select * from discuss_post where id = #{id}
+        </select>
+        <select id="selectByName" resultType="com.nowcoder.community.entity.User"></select>
+        <select id="selectByEmail" resultType="com.nowcoder.community.entity.User"></select>
+</mapper>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ch" xmlns:th="http://www.thymeleaf.org">
+<div>
+    <h2 th:text="${user.getUsername()}"></h2>
+    <p th:text="${user.getAge()}"></p>
+</div>
+<div th:object="${user}">
+    <h2 th:text="*{username}"></h2>
+    <p th:text="*{age}"></p>
+</div>
+<div>
+    <p th:if="${user.isVip}">会员</p>
+</div>
+<ul>
+    <li th:each="tag:${user.getTags()}"
+        th:text="${tag}"></li>
+</ul>
+<div th:switch="${user.getSex()}">
+    <p th:case="'1'">男</p>
+    <p th:case="'2'">女</p>
+    <p th:case="*">默认</p>
+</div>
+</html>    
