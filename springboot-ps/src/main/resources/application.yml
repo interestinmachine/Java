@@ -1,0 +1,45 @@
+server:
+  port: 81
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 选择环境
+#spring:
+#  profiles:
+#    active: dev
+#
+#---
+## 开发
+#spring:
+#  config:
+#    activate:
+#      on-profile: dev
+#server:
+#  port: 81
+#
+#---
+## 生产
+#spring:
+#  config:
+#    activate:
+#      on-profile: prod
+#server:
+#  port: 82
