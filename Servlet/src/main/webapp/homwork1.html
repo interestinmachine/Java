@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <button class="doPost">POST</button>
+    <button class="doPut">PUT</button>
+    <button class="doDelete">DELETE</button>
+    
+    <script>
+        let doPostBtn = document.querySelector('.doPost');
+        doPostBtn.onclick = function() {
+                $.ajax({
+                type: "post",
+                url: "pdd",
+                success: function(body) {
+                    console.log(body);
+                }
+            });
+        }
+
+        let doPutBtn = document.querySelector('.doPut');
+        doPostBtn.onclick = function() {
+                $.ajax({
+                type: "put",
+                url: "pdd",
+                success: function(body) {
+                    console.log(body);
+                }
+            });
+        }
+
+        let doDeleteBtn = document.querySelector('.doDelete');
+        doDeleteBtn.onclick = function() {
+                $.ajax({
+                type: "delete",
+                url: "pdd",
+                success: function(body) {
+                    console.log(body);
+                }
+            });
+        }
+        
+    </script>
+</body>
+</html>
