@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的博客</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="bloglist.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="nav">
+        <img src="img/cat2.jpg" class="headImage">
+        <span class="title">我的博客</span>
+        <span class="spacer"></span>
+        <a href="blog_list.html">主页</a>
+        <a href="blog_edit.html">写博客</a>
+        <span class="logout">注销</span>
+    </div>
+
+    <!-- 版心 -->
+    <div class="container">
+        <!-- 左侧用户信息栏 -->
+        <div class="left">
+            <div class="card">
+                <img src="img/cat.jpg" alt="" class="userImage">
+                <h3>Archer</h3>
+                <a href="https://github.com/">github 地址</a>
+                <div class="counter">
+                    <span>文章</span>
+                    <span>分类</span>
+                </div>
+                <div class="counter">
+                    <span>2</span>
+                    <span>1</span>
+                </div>
+            </div>
+            
+
+        </div>
+        <!-- 右侧内容区 -->
+        <div class="right">
+            <!-- <div class="blog">
+                <div class="blog_title">第一篇博客</div>
+                <div class="date">2022-8-22</div>
+                <div class="desc">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis ipsum tempora dolorem error necessitatibus. Reiciendis, atque assumenda rem magni animi, magnam aliquid accusantium saepe nemo sed, 
+                    veniam ut est ea?
+                </div>
+                <a href="#">查看全文 &gt; &gt;</a>
+            </div> -->
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+        // 通过这个函数，来从服务器获取到博客列表的数据
+        function getBlogs() {
+            $.ajax({
+                type: 'get',
+                url: 'blog',
+                success: function(body) {
+                    let container = document.querySelector('.right');
+                    for (let blog of body) {
+                        let blogDiv = document.createElement("div");
+                        blogDiv.className = 'blog';
+                        // 创建博客标题
+                        let titleDiv = document.createElement("div");
+                        titleDiv.className = 'blog_title';
+                        titleDiv.innerHTML = blog.title;
+                        blogDiv.appendChild(titleDiv);
+                        // 创建日期
+                        let dateDiv = document.createElement("div");
+                        dateDiv.className = 'date';
+                        dateDiv.innerHTML = blog.postTime;
+                        blogDiv.appendChild(dateDiv);
+                        // 创建摘要
+                        let descDiv = document.createElement("div");
+                        descDiv.className = 'desc';
+                        descDiv.innerHTML = blog.content;
+                        blogDiv.appendChild(descDiv);
+                        // 创建查看全文按钮
+                        let a = document.createElement("a");
+                        a.innerHTML = "查看全文 >>"
+                        a.href = "blog?blogId = " + blog.blogId;
+                        blogDiv.appendChild(a);
+
+                        // 将 blogDiv 加入外层元素
+                        container.appendChild(blogDiv);
+                    }
+                }
+            })
+        }
+        getBlogs();
+    </script>
+
+</body>
+</html>
