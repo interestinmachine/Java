@@ -23,18 +23,21 @@
     <div class="login_container">
         <!-- 对话框 -->
         <div class="login_dialog">
-            <h3>登陆</h3>
-            <div class="row">
-                <span>用户名</span>
-                <input type="text"  id="userName">
-            </div>
-            <div class="row">
-                <span>密码</span>
-                <input type="password" id="password">
-            </div>
-            <div class="row">
-                <button>提交</button>
-            </div>
+            <form action="login" method="post">
+                <h3>登陆</h3>
+                <div class="row">
+                    <span>用户名</span>
+                    <input type="text"  id="userName" name="username">
+                </div>
+                <div class="row">
+                    <span>密码</span>
+                    <input type="password" id="password" name="password">
+                </div>
+                <div class="row">
+                    <input type="submit" value="提交" id="submit">
+                </div>
+            </form>
+            
         </div>
     </div>
 </body>

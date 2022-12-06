@@ -23,7 +23,7 @@
     font-weight: bolder;
 }
 
-.blog_edit_container .title button {
+.blog_edit_container .title #submit {
     width: 100px;
     height: 40px;
     border: none;

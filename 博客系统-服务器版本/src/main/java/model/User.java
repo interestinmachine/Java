@@ -4,6 +4,19 @@ public class User {
     private Integer userId;
     private String username;
     private String password;
+    private int isYourBlog = 0;
+
+    public int getIsYourBlog() {
+        return isYourBlog;
+    }
+
+    public void setIsYourBlog(int isYourBlog) {
+        this.isYourBlog = isYourBlog;
+    }
+
+
+
+
 
     public Integer getUserId() {
         return userId;

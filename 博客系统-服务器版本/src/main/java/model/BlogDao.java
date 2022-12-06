@@ -47,7 +47,7 @@ public class BlogDao {
             // 1. 和数据库建立连接
             connection = DBUtil.getConnection();
             // 2. 构造 SQL 语句
-            String sql = "select * from blog";
+            String sql = "select * from blog order by postTime desc";
             statement = connection.prepareStatement(sql);
             // 3. 执行 SQL
             resultSet = statement.executeQuery();
