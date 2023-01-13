@@ -1,0 +1,18 @@
+# 配置数据库的连接字符串
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1/springtransaction?characterEncoding=utf-8
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# 配置打印 MyBatis 执行的SQL
+logging:
+  level:
+    com:
+      example:
+        demo: debug
+
+mybatis:
+  configuration: # 配置打印 MyBatis 执行的 SQL
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

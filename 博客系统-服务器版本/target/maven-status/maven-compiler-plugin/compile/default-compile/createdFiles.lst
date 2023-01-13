@@ -1,0 +1,10 @@
+model\UserDao.class
+controller\LoginServlet.class
+controller\DeleteServlet.class
+model\Blog.class
+controller\LogoutServlet.class
+model\BlogDao.class
+controller\BlogServlet.class
+controller\UserInfoServlet.class
+model\DBUtil.class
+model\User.class

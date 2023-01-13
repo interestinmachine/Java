@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的博客</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="bloglist.css">
+    <link rel="stylesheet" href="blogdetail.css">
+
+    <!-- 引入editor.md的依赖 -->
+    <link rel="stylesheet" href="editor.md/editormd.min.js" />
+    <script src="js/jquery.min.js"></script>
+    <script src="editor.md/lib/marked.min.js"></script>
+    <script src="editor.md/lib/prettify.min.js"></script>
+    <script src="editor.md/editormd.js"></script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="nav">
+        <img src="img/cat2.jpg" class="headImage">
+        <span class="title">我的博客</span>
+        <span class="spacer"></span>
+        <a href="blog_list.html">主页</a>
+        <a href="blog_edit.html">写博客</a>
+        <a href="logout">注销</a>
+    </div>
+
+    <!-- 版心 -->
+    <div class="container">
+        <!-- 左侧用户信息栏 -->
+        <div class="left">
+            <div class="card">
+                <img src="img/cat.jpg" alt="" class="userImage">
+                <h3>Archer</h3>
+                <a href="https://github.com/">github 地址</a>
+                <div class="counter">
+                    <span>文章</span>
+                    <span>分类</span>
+                </div>
+                <div class="counter">
+                    <span>2</span>
+                    <span>1</span>
+                </div>
+            </div>
+        </div>
+        <!-- 右侧内容区 -->
+        <div class="right">
+            <div class="blog_content">
+                <h3>第一篇博客</h3>
+                <div class="date">2022-8-22</div>
+                <!-- 博客正文 -->
+                <div id="content">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        function getBlog() {
+            $.ajax({
+                type: 'get',
+                url: 'blog' + location.search,
+                success: function(body) {
+                    // body 就是得到的一个 json 格式的博客数据，由于响应的 Content-Type 是 application/json
+                    // 因此 jquery 就会自动把响应数据转换为 js 对象
+                    let h3 = document.querySelector('.blog_content h3');
+                    h3.innerHTML = body.title;
+                    let divDate = document.querySelector('.blog_content .date');
+                    divDate.innerHTML = body.postTime;
+                    // let divContent = document.querySelector('#content');
+                    // divContent.innerHTML = body.content;
+
+                    // 这个方法就是 editor.md 提供的一个方法把 markdown 字符串转成格式化的效果
+                    // 第一个参数是一个 div 的 id，表示把渲染结果放到哪个div中
+                    // 第二个参数是一个 js 对象，把正文内容加入即可（还支持很多别的参数属性，此处暂时不涉及）
+                    editormd.markdownToHTML('content',{
+                        markdown: body.content
+                    });
+                }
+            });
+        }
+        getBlog();
+
+        checkLogin();
+
+        // 获取当前用户信息
+        function getUserInfo() {
+            $.ajax({
+                type: 'get',
+                url: 'userinfo' + location.search,
+                success: function(body) {
+                    // 让后端在查询失败的的时候，不要返回 200，而是返回403
+                    // 避免在 前端触发 successs 分支
+                    let h3 = document.querySelector('.card h3');
+                    h3.innerHTML = body.username;
+
+                    if (body.isYourBlog) {
+                        // 在导航栏中加个按钮，用来删除文章
+                        let deleteA = document.querySelector('a');
+                        // location.search 就是当前页面的 url 的 query string，也就是
+                        // ?blogId=1 这样的结果
+                        deleteA.href = 'blogDelete' + location.search;
+                        deleteA.innerHTML = '删除';
+
+                        let navDiv = document.querySelector('.nav');
+                        navDiv.appendChild(deleteA);
+                    }
+                }
+            });
+        }
+
+        getUserInfo();
+    </script>
+    
+</body>
+</html>
