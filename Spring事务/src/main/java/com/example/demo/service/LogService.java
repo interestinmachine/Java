@@ -8,33 +8,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 @Service
-public class UserService {
+public class LogService {
 
     @Autowired
-    private UserMapper userMapper;
-
-    @Autowired
-    private LogService logService;
+    private LogMapper logMapper;
 
     @Transactional(propagation = Propagation.NESTED)
-    public int addUser(UserInfo userInfo) {
-        int ret = userMapper.addUser(userInfo);
-        System.out.println("执行add方法");
-        // 插入日志
-        logService.addLog("用户插入：" + userInfo.getUsername());
-        return ret;
+    public int addLog(String content) {
+        // 出现异常
+        try {
+            int i = 10/0;
+        } catch (Exception e) {
+            System.out.println("addLog 要回滚了！");
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+        }
+        return logMapper.addLog(content);
     }
 }
-
-
-
-
-
-
-
-
 
 
 

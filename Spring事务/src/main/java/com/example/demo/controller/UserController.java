@@ -1,12 +1,15 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.UserInfo;
+import com.example.demo.service.LogService;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,16 +53,34 @@ public class UserController {
         return ret;
     }
 
+
     @RequestMapping("/adduser2")
-    @Transactional(timeout = 1)
+    @Transactional()
     public int addUser2(UserInfo userInfo) {
         // 用户名和密码不能为空
         if (userInfo == null || !StringUtils.hasLength(userInfo.getUsername())
                 || !StringUtils.hasLength(userInfo.getPassword())) {
             return 0;
         }
+
+        try {
+            int i = 10/0;
+        } catch (Exception e) {
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+        }
         int ret = userService.addUser(userInfo);
         System.out.println("addUser 受影响的行数：" + ret);
+        return ret;
+    }
+
+    @Autowired
+    private LogService logService;
+
+    @RequestMapping("/adduser3")
+    @Transactional(propagation = Propagation.NESTED)
+    public int addUser3(UserInfo userInfo) {
+        // 插入用户
+        int ret = userService.addUser(userInfo);
         return ret;
     }
 }
