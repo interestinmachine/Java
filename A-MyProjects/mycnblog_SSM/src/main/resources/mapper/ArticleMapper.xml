@@ -3,4 +3,33 @@
 <!-- namespace 要设置成实现接口的具体包名加类名 -->
 <mapper namespace="com.example.mycnblog_ssm.mapper.ArticleMapper">
 
+    <insert id="postArticle">
+        insert into mycnblog.articleinfo(title,content,uid) values(#{title},#{content},#{id});
+    </insert>
+
+    <update id="update">
+        update mycnblog.articleinfo set title=#{title},content=#{content}
+        where id=#{aid} and uid=#{uid};
+    </update>
+
+    <delete id="myDel">
+        delete from mycnblog.articleinfo where id=#{aid}
+    </delete>
+
+    <select id="getMyList" resultType="com.example.mycnblog_ssm.model.ArticleInfo">
+        select * from mycnblog.articleinfo where uid=#{uid};
+    </select>
+
+    <select id="getArtDetail" resultType="com.example.mycnblog_ssm.model.ArticleInfo">
+        select * from mycnblog.articleinfo where id=#{aid};
+    </select>
+
+    <select id="getList" resultType="com.example.mycnblog_ssm.model.ArticleInfo">
+        select * from mycnblog.articleinfo limit #{psize} offset #{offset};
+    </select>
+
+    <select id="totalPage" resultType="java.lang.Integer">
+        select count(*) from mycnblog.articleinfo;
+    </select>
+
 </mapper>

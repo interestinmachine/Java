@@ -21,4 +21,12 @@ public class UserService {
     public UserInfo login(String username,String password) {
         return userMapper.login(username,password);
     }
+
+    public UserInfo myInfoByUid(Integer uid) {
+        return userMapper.myInfoByUid(uid);
+    }
+
+    public UserInfo getUserByName(String username) {
+        return userMapper.getUserByName(username);
+    }
 }

@@ -2,11 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace 要设置成实现接口的具体包名加类名 -->
 <mapper namespace="com.example.mycnblog_ssm.mapper.UserMapper">
+
     <insert id="addUser">
         insert into mycnblog.userinfo
         (username,password) values (#{username},#{password});
     </insert>
+
     <select id="login" resultType="com.example.mycnblog_ssm.model.UserInfo">
         select * from mycnblog.userinfo where username=#{username} and password=#{password};
+    </select>
+
+    <select id="myInfoByUid" resultType="com.example.mycnblog_ssm.model.UserInfo">
+        select * from mycnblog.userinfo where id=#{uid};
+    </select>
+
+    <select id="getUserByName" resultType="com.example.mycnblog_ssm.model.UserInfo">
+        select * from mycnblog.userinfo where username=#{username};
     </select>
 </mapper>

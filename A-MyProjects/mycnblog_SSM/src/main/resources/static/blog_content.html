@@ -13,6 +13,7 @@
     <script src="editor.md/editormd.js"></script>
     <script src="editor.md/lib/marked.min.js"></script>
     <script src="editor.md/lib/prettify.min.js"></script>
+    <script src="js/tools.js"></script>
 </head>
 
 <body>
@@ -32,7 +33,7 @@
         <div class="container-left">
             <div class="card">
                 <img src="img/doge.jpg" class="avtar" alt="">
-                <h3>比特小可爱</h3>
+                <h3>admin</h3>
                 <a href="http:www.github.com">github 地址</a>
                 <div class="counter">
                     <span>文章</span>
@@ -48,9 +49,14 @@
         <div class="container-right">
             <div class="blog-content">
                 <!-- 博客标题 -->
-                <h3>我的第一篇博客</h3>
+                <h3 class="title">我的第一篇博客</h3>
                 <!-- 博客时间 -->
-                <div class="date">2021-06-02</div>
+                <div class="data">
+                    <span>博客发布时间：</span>
+                    <span id="data_time"></span>
+                    <!-- 博客阅读量 -->
+                    <span>&nbsp;&nbsp;&nbsp;阅读量：</span><span id="rcount"></span>
+                </div>
                 <!-- 博客正文 -->
                 <div id="editorDiv">
 
@@ -59,16 +65,59 @@
         </div>
     </div>
     <script type="text/javascript">
-            var editormd;
-            function initEdit(md){
-                editormd = editormd.markdownToHTML("editorDiv", {
-                markdown : md, // Also, you can dynamic set Markdown text
+        var editormd;
+        function initEdit(md) {
+            editormd = editormd.markdownToHTML("editorDiv", {
+                markdown: md, // Also, you can dynamic set Markdown text
                 // htmlDecode : true,  // Enable / disable HTML tag encode.
                 // htmlDecode : "style,script,iframe",  // Note: If enabled, you should filter some dangerous HTML tags for website security.
+            });
+        }
+
+        
+
+        function myInfo(uid) {
+            jQuery.ajax({
+                url: "/user/myinfobyuid",
+                type: "POST",
+                data: {"uid":uid},
+                success: function (result) {
+                    if (result.code == 200 && result.data != null) {
+                        jQuery("#card .h3").text(result.data.username);
+                    }
+                },
+                error: function (err) { }
+            });
+        }
+
+        // 获取文章详情信息
+        function getArtDetail() {
+            // 从 url 中获取文章 id
+            var aid = getURLParam("id");
+            if (aid != null && aid > 0) {
+                // 访问后端查询文章详情
+                jQuery.ajax({
+                    url: "/article/detail",
+                    type: "POST",
+                    data: { "aid": aid },
+                    success: function (result) {
+                        if (result.code == 200 && result.data != null) {
+                            var art = result.data;
+                            jQuery('#title').text(art.title);
+                            jQuery('#data_time').text(art.createtime);
+                            jQuery('#rcount').text(art.rcount);
+                            editormd = editormd.markdownToHTML("editorDiv", {
+                                markdown: art.content
+                            });
+                            myInfo(art.uid);
+                        }
+                    }
                 });
             }
-            
-    </script> 
+        }
+        getArtDetail();
+
+    </script>
 </body>
 
 </html>
