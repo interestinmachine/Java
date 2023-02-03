@@ -29,4 +29,13 @@ public class Result {
     public void setDesc(String desc) {
         this.desc = desc;
     }
+
+    @Override
+    public String toString() {
+        return "Result{" +
+                "title='" + title + '\'' +
+                ", url='" + url + '\'' +
+                ", desc='" + desc + '\'' +
+                '}';
+    }
 }

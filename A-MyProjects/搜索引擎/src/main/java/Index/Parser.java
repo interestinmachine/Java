@@ -75,7 +75,7 @@ public class Parser {
         // 2. 解析出 HTML 对应的 URL
         String url = parserURL(f);
         // 3. 解析出 HTML 对应的正文（有了正文才有后续的描述）
-        String content = parserContent(f);
+        String content = parserContentByRegex(f);
         // 4. 把解析出来的这些信息，加入到索引当中
         index.addDoc(title,url,content);
     }
@@ -118,6 +118,40 @@ public class Parser {
                         isCopy = true;
                     }
                 }
+            }
+            return content.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    // 此方法基于正则表达式，实现去标签，就是去除 script
+    public String parserContentByRegex(File f) {
+        // 1. 把整个文件都读到 String 里面
+        String content = readFile(f);
+        // 2. 替换掉 script 标签
+        content = content.replaceAll("<script.*?>(.*?)</script>"," ");
+        // 3. 替换掉普通的 html 标签
+        content = content.replaceAll("<.*?>"," ");
+        // 4. 使用正则把多个空格合成一个
+        content = content.replaceAll("\\s+"," ");
+        return content;
+    }
+
+    private String readFile(File f) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(f))) {
+            StringBuilder content = new StringBuilder();
+            while (true) {
+                int ret = bufferedReader.read();
+                if (ret == -1) {
+                    break;
+                }
+                char c = (char) ret;
+                if (c == '\n' || c == '\r') {
+                    c = ' ';
+                }
+                content.append(c);
             }
             return content.toString();
         } catch (IOException e) {
