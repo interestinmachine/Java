@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java 文档搜索</title>
+    <link rel="stylesheet" type="text/css" href="common.css">
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        <!-- 搜索界面 -->
+        <div class="header">
+            <input type="text">
+            <button type="submit" id="search_btn">搜索</button>
+        </div>
+
+        <!-- 搜索结果 -->
+        <div class="result">
+            <!-- <div class="item">
+                <a href="#">标题</a>
+                <div class="desc">描述</div>
+                <div class="url">www.baidu.com</div>
+            </div> -->
+        </div>
+    </div>
+
+    <script>
+        let button = document.querySelector("#search_btn");
+        button.onclick = function() {
+            let input = document.querySelector(".header input");
+            let query = input.value;
+            jQuery.ajax({
+                type: "GET",
+                url: "searcher?query=" + query,
+                success: function(data,status) {
+                    buildResult(data);
+                }
+            });
+        }
+
+        function buildResult(data) {
+            let result = document.querySelector(".result");
+            // 清空上次的结果
+            result.innerHTML = "";
+
+            // 先构造一个 div 用来显示结果的个数
+            let countDiv = document.createElement('div');
+            countDiv.innerHTML = "找到 " + data.length + " 个搜索结果！";
+            result.appendChild(countDiv);
+
+            for (let item of data) {
+                let itemDiv = document.createElement("div");
+                itemDiv.className = "item";
+
+                let title = document.createElement("a");
+                title.innerHTML = item.title;
+                title.href = item.url;
+                /*页面跳转，让原页面不会消失*/
+                title.target = '_blank';
+                itemDiv.appendChild(title);
+
+                let desc = document.createElement("div");
+                desc.className = "desc";
+                desc.innerHTML = item.desc;
+                itemDiv.appendChild(desc);
+
+                let url = document.createElement("div");
+                url.className = "url";
+                url.innerHTML = item.url;
+                itemDiv.appendChild(url);
+                
+                result.appendChild(itemDiv);
+
+            }
+        }
+    </script>
+    
+</body>
+</html>

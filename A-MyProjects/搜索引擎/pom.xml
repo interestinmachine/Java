@@ -35,5 +35,9 @@
         </dependency>
 
     </dependencies>
+    <packaging>war</packaging>
+    <build>
+        <finalName>java_index_searcher</finalName>
+    </build>
 
 </project>

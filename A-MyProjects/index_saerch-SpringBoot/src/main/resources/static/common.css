@@ -1,0 +1,95 @@
+/*去除浏览器默认样式*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*给整体页面指定一个高度*/
+html, body {
+    height: 100%;
+    /*设置背景图*/
+    background-image: url(img/m.jpg);
+    /*设置背景图不平铺*/
+    background-repeat: no-repeat;
+    /*设置图片位置*/
+    background-position: center center; 
+    /*设置背景图大小*/
+    background-size: cover;
+}
+
+/*设置版心样式*/
+.container {
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+    /*设置背景色，让版心和背景图能够区分开*/
+    background-color: rgba(255, 255, 255, 0.8);
+    /*设置圆角*/
+    border-radius: 20px;
+    /*设置内边距，避免文字内容紧贴边界*/
+    padding: 20px;
+
+    /*加上这个属性，超出元素的部分会自动生成一个滚动条*/
+    overflow: auto;
+}
+
+.header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*设置输入框样式*/
+.header>input {
+    width: 77%;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 22px;
+    line-height: 50px;
+    padding-left: 10px;
+}
+
+.header>button {
+    width: 20%;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgba(34,139,34, 0.9);
+    color: #fff;
+    font-size: 22px;
+    line-height: 50px;
+    border: none;
+}
+
+.header>button:active {
+    background: gray;
+}
+
+.item {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.item a {
+    display: block;
+    height: 40px;
+    font-size: 22px;
+    line-height: 40px;
+    font-weight: 700;
+    color: #4007A2;
+}
+
+.item .desc {
+    font-size: 14px;
+}
+
+.item .desc i {
+    color: red;
+}
+
+.item .url {
+    font-size: 10px;
+    color: rgb(0, 128, 0);
+}

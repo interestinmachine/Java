@@ -46,6 +46,11 @@
             // 清空上次的结果
             result.innerHTML = "";
 
+            // 先构造一个 div 用来显示结果的个数
+            let countDiv = document.createElement('div');
+            countDiv.innerHTML = "找到 " + data.length + " 个搜索结果！";
+            result.appendChild(countDiv);
+
             for (let item of data) {
                 let itemDiv = document.createElement("div");
                 itemDiv.className = "item";
